@@ -15,6 +15,7 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
+ * Version 1.0.1
  */
 
 package main
@@ -34,51 +35,57 @@ type AssetTransferSmartContract struct {
 	contractapi.Contract
 }
 
+// AssetTransferSmartContract provides functions for managing an asset
+type AditionalInfo struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
+}
+
 // Actor describes basic details of an actor in the SCM
 type Actor struct {
-	ActorID          string            `json:"actorID"`
-	ActorType        string            `json:"actorType"`
-	ActorName        string            `json:"actorName"`
-	Deleted          bool              `json:"deleted"`
-	AditionalInfoMap map[string]string `json:"aditionalInfoMap"`
+	ActorID          string          `json:"actorID"`
+	ActorType        string          `json:"actorType"`
+	ActorName        string          `json:"actorName"`
+	Deleted          bool            `json:"deleted"`
+	AditionalInfoMap []AditionalInfo `json:"aditionalInfoMap"`
 	//assetID        string            `json:"assetID"`
 }
 
 // Step describes basic details of an step in the SCM
 type Step struct {
-	StepID           string            `json:"stepID"`
-	StepName         string            `json:"stepName"`
-	StepOrder        uint              `json:"stepOrder"`
-	ActorType        string            `json:"actorType"`
-	Deleted          bool              `json:"deleted"`
-	AditionalInfoMap map[string]string `json:"aditionalInfoMap"`
+	StepID           string          `json:"stepID"`
+	StepName         string          `json:"stepName"`
+	StepOrder        uint            `json:"stepOrder"`
+	ActorType        string          `json:"actorType"`
+	Deleted          bool            `json:"deleted"`
+	AditionalInfoMap []AditionalInfo `json:"aditionalInfoMap"`
 }
 
 // AssetItem describes ths single item in the SCM
 type AssetItem struct {
-	AssetItemID      string            `json:"assetItemID"`
-	OwnerID          string            `json:"ownerID"`
-	StepID           string            `json:"stepID"`
-	ParentID         string            `json:"parentID"`
-	ProcessDate      string            `json:"processDate"`  //(date which currenct actor acquired the item)
-	DeliveryDate     string            `json:"deliveryDate"` //(date which currenct actor received the item)
-	OrderPrice       string            `json:"orderPrice"`
-	ShippingPrice    string            `json:"shippingPrice"`
-	Status           string            `json:"status"`
-	Quantity         string            `json:"quantity"`
-	Deleted          bool              `json:"deleted"`
-	AditionalInfoMap map[string]string `json:"aditionalInfoMap"`
+	AssetItemID      string          `json:"assetItemID"`
+	OwnerID          string          `json:"ownerID"`
+	StepID           string          `json:"stepID"`
+	ParentID         string          `json:"parentID"`
+	ProcessDate      string          `json:"processDate"`  //(date which currenct actor acquired the item)
+	DeliveryDate     string          `json:"deliveryDate"` //(date which currenct actor received the item)
+	OrderPrice       string          `json:"orderPrice"`
+	ShippingPrice    string          `json:"shippingPrice"`
+	Status           string          `json:"status"`
+	Quantity         string          `json:"quantity"`
+	Deleted          bool            `json:"deleted"`
+	AditionalInfoMap []AditionalInfo `json:"aditionalInfoMap"`
 }
 
 // Asset is the collection of assetItems in the SCM
 type Asset struct {
-	AssetID          string            `json:"assetID"`
-	AssetName        string            `json:"assetName"`
-	AssetItems       []AssetItem       `json:"assetItems"`
-	Actors           []Actor           `json:"actors"`
-	Steps            []Step            `json:"steps"`
-	Deleted          bool              `json:"deleted"`
-	AditionalInfoMap map[string]string `json:"aditionalInfoMap"`
+	AssetID          string          `json:"assetID"`
+	AssetName        string          `json:"assetName"`
+	AssetItems       []AssetItem     `json:"assetItems"`
+	Actors           []Actor         `json:"actors"`
+	Steps            []Step          `json:"steps"`
+	Deleted          bool            `json:"deleted"`
+	AditionalInfoMap []AditionalInfo `json:"aditionalInfoMap"`
 }
 
 // QueryResult structure used for handling result of query
@@ -90,7 +97,10 @@ type QueryResult struct {
 // InitLedger adds a base set of items to the ledger
 func (s *AssetTransferSmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 
-	aditionalInfoMap := make(map[string]string)
+	aditionalInfoMap := []AditionalInfo{
+		{Key: "key1", Value: "value1"},
+		{Key: "key2", Value: "value2"},
+	}
 
 	actors := []Actor{
 		{ActorID: "1", ActorType: "rawMaterial", ActorName: "James Johnson", AditionalInfoMap: aditionalInfoMap},
@@ -180,7 +190,7 @@ func (s *AssetTransferSmartContract) InitLedger(ctx contractapi.TransactionConte
 }
 
 // CreateActor adds a new Actor to the world state with given details
-func (s *AssetTransferSmartContract) CreateActor(ctx contractapi.TransactionContextInterface, actorID string, actorType string, actorName string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) CreateActor(ctx contractapi.TransactionContextInterface, actorID string, actorType string, actorName string, aditionalInfoMap []AditionalInfo) error {
 	log.Print("[CreateActor] called with actorID: ", actorID)
 	actorJSON, err := ctx.GetStub().GetState("ACTOR_" + actorID)
 
@@ -210,7 +220,7 @@ func (s *AssetTransferSmartContract) CreateActor(ctx contractapi.TransactionCont
 }
 
 // CreateStep adds a new Step to the world state with given details
-func (s *AssetTransferSmartContract) CreateStep(ctx contractapi.TransactionContextInterface, stepID string, stepName string, stepOrder uint, actorType string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) CreateStep(ctx contractapi.TransactionContextInterface, stepID string, stepName string, stepOrder uint, actorType string, aditionalInfoMap []AditionalInfo) error {
 	log.Print("[CreateStep] called with stepID: ", stepID)
 	stepJSON, err := ctx.GetStub().GetState("STEP_" + stepID)
 
@@ -241,7 +251,7 @@ func (s *AssetTransferSmartContract) CreateStep(ctx contractapi.TransactionConte
 }
 
 // CreateAssetItem adds a new AssetItem to the world state with given details
-func (s *AssetTransferSmartContract) CreateAssetItem(ctx contractapi.TransactionContextInterface, assetItemID string, ownerID string, stepId string, deliveryDate string, orderPrice string, shippingPrice string, status string, quantity string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) CreateAssetItem(ctx contractapi.TransactionContextInterface, assetItemID string, ownerID string, stepId string, deliveryDate string, orderPrice string, shippingPrice string, status string, quantity string, aditionalInfoMap []AditionalInfo) error {
 	log.Print("[CreateAssetItem] called with assetItemID: ", assetItemID)
 	assetItemJSON, err := ctx.GetStub().GetState("ASSET_ITEM_" + assetItemID)
 
@@ -278,7 +288,7 @@ func (s *AssetTransferSmartContract) CreateAssetItem(ctx contractapi.Transaction
 }
 
 // CreateAsset adds a new Asset with empty arrays to the world state with given details
-func (s *AssetTransferSmartContract) CreateEmptyAsset(ctx contractapi.TransactionContextInterface, assetID string, assetName string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) CreateEmptyAsset(ctx contractapi.TransactionContextInterface, assetID string, assetName string, aditionalInfoMap []AditionalInfo) error {
 	assetJSON, err := ctx.GetStub().GetState("ASSET_" + assetID)
 
 	if err != nil {
@@ -308,7 +318,7 @@ func (s *AssetTransferSmartContract) CreateEmptyAsset(ctx contractapi.Transactio
 }
 
 // CreateAsset adds a new Asset to the world state with given details
-func (s *AssetTransferSmartContract) CreateAsset(ctx contractapi.TransactionContextInterface, assetID string, assetName string, assetItems []AssetItem, actors []Actor, steps []Step, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) CreateAsset(ctx contractapi.TransactionContextInterface, assetID string, assetName string, assetItems []AssetItem, actors []Actor, steps []Step, aditionalInfoMap []AditionalInfo) error {
 	assetJSON, err := ctx.GetStub().GetState("ASSET_" + assetID)
 
 	if err != nil {
@@ -537,7 +547,7 @@ func (s *AssetTransferSmartContract) QueryAllAssets(ctx contractapi.TransactionC
 }
 
 // UpdateActor updates an existing Actor to the world state with given details
-func (s *AssetTransferSmartContract) UpdateActor(ctx contractapi.TransactionContextInterface, actorID string, actorType string, actorName string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) UpdateActor(ctx contractapi.TransactionContextInterface, actorID string, actorType string, actorName string, aditionalInfoMap []AditionalInfo) error {
 	actorJSON, err := ctx.GetStub().GetState("ACTOR_" + actorID)
 
 	if err != nil {
@@ -565,7 +575,7 @@ func (s *AssetTransferSmartContract) UpdateActor(ctx contractapi.TransactionCont
 }
 
 // UpdateStep updates an existing Step to the world state with given details
-func (s *AssetTransferSmartContract) UpdateStep(ctx contractapi.TransactionContextInterface, stepID string, stepName string, stepOrder uint, actorType string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) UpdateStep(ctx contractapi.TransactionContextInterface, stepID string, stepName string, stepOrder uint, actorType string, aditionalInfoMap []AditionalInfo) error {
 	stepJSON, err := ctx.GetStub().GetState("STEP_" + stepID)
 
 	if err != nil {
@@ -594,7 +604,7 @@ func (s *AssetTransferSmartContract) UpdateStep(ctx contractapi.TransactionConte
 }
 
 // UpdateAssetItem updates an existing AssetItem to the world state with given details
-func (s *AssetTransferSmartContract) UpdateAssetItem(ctx contractapi.TransactionContextInterface, assetItemID string, ownerID string, stepID string, parentID string, deliveryDate string, orderPrice string, shippingPrice string, status string, quantity string, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) UpdateAssetItem(ctx contractapi.TransactionContextInterface, assetItemID string, ownerID string, stepID string, parentID string, deliveryDate string, orderPrice string, shippingPrice string, status string, quantity string, aditionalInfoMap []AditionalInfo) error {
 	assetItemJSON, err := ctx.GetStub().GetState("ASSET_ITEM_" + assetItemID)
 
 	if err != nil {
@@ -629,7 +639,7 @@ func (s *AssetTransferSmartContract) UpdateAssetItem(ctx contractapi.Transaction
 }
 
 // UpdateAsset updates an existing Asset to the world state with given details
-func (s *AssetTransferSmartContract) UpdateAsset(ctx contractapi.TransactionContextInterface, assetID string, assetName string, assetItems []AssetItem, actors []Actor, steps []Step, aditionalInfoMap map[string]string) error {
+func (s *AssetTransferSmartContract) UpdateAsset(ctx contractapi.TransactionContextInterface, assetID string, assetName string, assetItems []AssetItem, actors []Actor, steps []Step, aditionalInfoMap []AditionalInfo) error {
 	assetJSON, err := ctx.GetStub().GetState("ASSET_" + assetID)
 
 	if err != nil {
