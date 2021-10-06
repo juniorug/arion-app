@@ -1,0 +1,170 @@
+[
+   {
+      "assetID":"1",
+      "assetName":"Gravel",
+      "assetItems":[
+         {
+            "assetItemID":"1",
+            "ownerID":"1",
+            "stepID":"1",
+            "parentID":"0",
+            "processDate":"2021-04-11 21:49:49",
+            "deliveryDate":"2020-03-07T15:04:05",
+            "orderPrice":"",
+            "shippingPrice":"",
+            "status":"order initiated",
+            "quantity":"2",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "assetItemID":"2",
+            "ownerID":"1",
+            "stepID":"1",
+            "parentID":"0",
+            "processDate":"2021-04-11 21:49:58",
+            "deliveryDate":"2020-03-07T15:04:05",
+            "orderPrice":"",
+            "shippingPrice":"",
+            "status":"order initiated",
+            "quantity":"2",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "assetItemID":"3",
+            "ownerID":"2",
+            "stepID":"2",
+            "parentID":"1",
+            "processDate":"2021-04-11 21:51:26",
+            "deliveryDate":"",
+            "orderPrice":"50",
+            "shippingPrice":"5",
+            "status":"producing",
+            "quantity":"1",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "assetItemID":"4",
+            "ownerID":"2",
+            "stepID":"2",
+            "parentID":"1",
+            "processDate":"2021-04-11 21:51:38",
+            "deliveryDate":"",
+            "orderPrice":"50",
+            "shippingPrice":"5",
+            "status":"producing",
+            "quantity":"1",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         }
+      ],
+      "actors":[
+         {
+            "actorID":"1",
+            "actorType":"rawMaterial",
+            "actorName":"James JohnsonX9",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "actorID":"2",
+            "actorType":"manufacturer",
+            "actorName":"Donald Jackson",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         }
+      ],
+      "steps":[
+         {
+            "stepID":"1",
+            "stepName":"exploration",
+            "stepOrder":1,
+            "actorType":"rawMaterial",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "stepID":"2",
+            "stepName":"production",
+            "stepOrder":2,
+            "actorType":"manufacturer",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         }
+      ],
+      "deleted":false,
+      "aditionalInfoMap":{
+         
+      }
+   },
+   {
+      "assetID":"2",
+      "assetName":"Coffee",
+      "assetItems":[
+      ],
+      "actors":[
+         {
+            "actorID":"3",
+            "actorType":"coffee grower",
+            "actorName":"Andrew O'connell",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "actorID":"4",
+            "actorType":"producer",
+            "actorName":"Olivia Jones",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         }
+      ],
+      "steps":[
+         {
+            "stepID":"3",
+            "stepName":"extraction",
+            "stepOrder":1,
+            "actorType":"coffee grower",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         },
+         {
+            "stepID":"2",
+            "stepName":"production",
+            "stepOrder":2,
+            "actorType":"producer",
+            "deleted":false,
+            "aditionalInfoMap":{
+               
+            }
+         }
+      ],
+      "deleted":false,
+      "aditionalInfoMap":{
+         
+      }
+   }
+]

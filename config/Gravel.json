@@ -1,0 +1,61 @@
+{
+   "AssetId":"Gravel",
+   "Actors":[
+      {
+         "actorType":"rawMaterial",
+         "aditionalInfo":[{ }]
+      },
+      {
+         "actorType":"manufacturer",
+         "aditionalInfo":[{ }]
+      },
+      {
+         "actorType":"distributor",
+         "aditionalInfo":[{ }]
+      },
+      {
+         "actorType":"wholesaler",
+         "aditionalInfo":[{ }]
+      },
+      {
+         "actorType":"retailer",
+         "aditionalInfo":[{ }]
+      },
+      {
+         "actorType":"consumer",
+         "aditionalInfo":[{ }]
+      }
+   ],
+   "Steps":[
+      {
+         "step":"exploration",
+         "stepOrder":1,
+         "actorType":"rawMaterial"
+      },
+      {
+         "step":"Production",
+         "stepOrder":2,
+         "actorType":"manufacturer"
+      },
+      {
+         "step":"distribution",
+         "stepOrder":3,
+         "actorType":"distributor"
+      },
+      {
+         "step":"Wholesale",
+         "stepOrder":4,
+         "actorType":"wholesaler"
+      },
+      {
+         "step":"Retail",
+         "stepOrder":5,
+         "actorType":"retailer"
+      },
+      {
+         "step":"Sale",
+         "stepOrder":6,
+         "actorType":"consumer"
+      }
+   ]
+}

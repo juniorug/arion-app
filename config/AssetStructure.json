@@ -1,0 +1,20 @@
+{
+   "AssetId":"assetName",
+   "Actors":[
+      {
+         "actorType":"type",
+         "aditionalInfo":[
+            {
+               "key":"value"
+            }
+         ]
+      }
+   ],
+   "Steps":[
+      {
+         "step":"stepName",
+         "stepOrder":1,
+         "actorType":"actorType"
+      }
+   ]
+}
