@@ -3,7 +3,7 @@
  * Author: Junior Mascarenhas
  * Contact: juniorug@gmail.com
  * homepage: "https://github.com/juniorug/arion-app#readme",
- * Version 1.0.2
+ * Version 1.0.4
  */
 
 package main
@@ -337,7 +337,8 @@ func (s *AssetTransferSmartContract) CreateAsset(ctx contractapi.TransactionCont
 
 	assetAsBytes, err := json.Marshal(asset)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error when marshalling the asset: %s . err: %s", assetID, err)
+		//return err
 	}
 
 	return ctx.GetStub().PutState("ASSET_"+assetID, assetAsBytes)
@@ -433,7 +434,7 @@ func (s *AssetTransferSmartContract) QueryAsset(ctx contractapi.TransactionConte
 //QueryAllActors returns the actors' list stored in the world state
 func (s *AssetTransferSmartContract) QueryAllActors(ctx contractapi.TransactionContextInterface) ([]*Actor, error) {
 
-	actorsIterator, err := ctx.GetStub().GetStateByRange("ACTOR_0", "ACTOR_9999999999999999999")
+	actorsIterator, err := ctx.GetStub().GetStateByRange("ACTOR_", "ACTOR_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
 	if err != nil {
 		return nil, err
 	}
@@ -461,7 +462,7 @@ func (s *AssetTransferSmartContract) QueryAllActors(ctx contractapi.TransactionC
 //QueryAllSteps returns the steps' list stored in the world state
 func (s *AssetTransferSmartContract) QueryAllSteps(ctx contractapi.TransactionContextInterface) ([]*Step, error) {
 
-	stepsIterator, err := ctx.GetStub().GetStateByRange("STEP_0", "STEP_9999999999999999999")
+	stepsIterator, err := ctx.GetStub().GetStateByRange("STEP_", "STEP_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
 	if err != nil {
 		return nil, err
 	}
@@ -489,7 +490,7 @@ func (s *AssetTransferSmartContract) QueryAllSteps(ctx contractapi.TransactionCo
 //QueryAllAssetItems returns the asset items' list stored in the world state
 func (s *AssetTransferSmartContract) QueryAllAssetItems(ctx contractapi.TransactionContextInterface) ([]*AssetItem, error) {
 
-	assetItemsIterator, err := ctx.GetStub().GetStateByRange("ASSET_ITEM_0", "ASSET_ITEM_9999999999999999999")
+	assetItemsIterator, err := ctx.GetStub().GetStateByRange("ASSET_ITEM_", "ASSET_ITEM_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
 	if err != nil {
 		return nil, err
 	}
@@ -517,7 +518,7 @@ func (s *AssetTransferSmartContract) QueryAllAssetItems(ctx contractapi.Transact
 //QueryAllAssets returns the assets' list stored in the world state
 func (s *AssetTransferSmartContract) QueryAllAssets(ctx contractapi.TransactionContextInterface) ([]*Asset, error) {
 
-	assetsIterator, err := ctx.GetStub().GetStateByRange("ASSET_0", "ASSET_9999999999999999999")
+	assetsIterator, err := ctx.GetStub().GetStateByRange("ASSET_", "ASSET_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
 	if err != nil {
 		return nil, err
 	}
