@@ -1,170 +1,326 @@
 [
    {
-      "assetID":"1",
-      "assetName":"Gravel",
+      "assetID":"cb7497f0-47d7-435b-96e2-8d4258517b7a",
+      "assetName":"Coffee",
+      "description": "such amazing drink",
       "assetItems":[
          {
-            "assetItemID":"1",
-            "ownerID":"1",
-            "stepID":"1",
+            "assetItemID":"a544bb43-61c6-48e9-9908-3edc17837dc3",
+            "ownerID":"818f6b34-2842-4e40-94c1-bd5b79cd0acd",
+            "stepID":"abfd4f63-c172-4bd4-8ebd-ae840348e695",
             "parentID":"0",
-            "processDate":"2021-04-11 21:49:49",
-            "deliveryDate":"2020-03-07T15:04:05",
+            "children":["10043c19-baab-4083-bf52-bcb1e0009475","ff446b7b-3709-41f2-9839-e6abe6912158"],
+            "processDate":"2021-04-11T11:49:49",
+            "deliveryDate":"2020-03-07T07:04:05",
             "orderPrice":"",
             "shippingPrice":"",
-            "status":"order initiated",
-            "quantity":"2",
+            "status":"Sold",
+            "quantity":"4",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[
+               {"key" : "Harvest", "value" : "june-2021"},
+               {"key" : "Method", "value" : "selective"},
+               {"key" : "Name01", "value" : "Name01"},
+               {"key" : "Name02", "value" : "Name02"},
+               {"key" : "Name03", "value" : "Name03"},
+               {"key" : "Name04", "value" : "Name04"},
+               {"key" : "Name05", "value" : "Name05"},
+               {"key" : "Name06", "value" : "Name06"},
+               {"key" : "Name07", "value" : "Name07"},
+               {"key" : "Name08", "value" : "Name08"},
+               {"key" : "Name09", "value" : "Name09"}
+            ]
          },
          {
-            "assetItemID":"2",
-            "ownerID":"1",
-            "stepID":"1",
+            "assetItemID":"600c17ca-9b87-4769-9038-d9899989ab42",
+            "ownerID":"818f6b34-2842-4e40-94c1-bd5b79cd0acd",
+            "stepID":"abfd4f63-c172-4bd4-8ebd-ae840348e695",
             "parentID":"0",
-            "processDate":"2021-04-11 21:49:58",
-            "deliveryDate":"2020-03-07T15:04:05",
+            "children":[],
+            "processDate":"2021-04-11T21:49:58",
+            "deliveryDate":"",
             "orderPrice":"",
             "shippingPrice":"",
-            "status":"order initiated",
+            "status":"Order initiated",
             "quantity":"2",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[
+               {"key" : "Harvest", "value" : "june-2021"},
+               {"key" : "Method", "value" : "stripes"}
+            ]
          },
          {
-            "assetItemID":"3",
-            "ownerID":"2",
-            "stepID":"2",
-            "parentID":"1",
-            "processDate":"2021-04-11 21:51:26",
+            "assetItemID":"10043c19-baab-4083-bf52-bcb1e0009475",
+            "ownerID":"036c6611-49b7-4ed2-9521-57bffa05ebe5",
+            "stepID":"a206d480-4466-4948-9b71-944787df79f0",
+            "parentID":"a544bb43-61c6-48e9-9908-3edc17837dc3",
+            "children":["64be1ff8-8981-427c-b065-c424576b814d"],
+            "processDate":"2021-04-11T21:51:26",
+            "deliveryDate":"2021-05-11T15:06:54",
+            "orderPrice":"50",
+            "shippingPrice":"5",
+            "status":"Sold",
+            "quantity":"2",
+            "deleted":false,
+            "aditionalInfoMap":[
+               {"key" : "Batch", "value" : "202106COF89b0cede"},
+               {"key" : "Type", "value" : "Arabica"}
+            ]
+
+         },
+         {
+            "assetItemID":"ff446b7b-3709-41f2-9839-e6abe6912158",
+            "ownerID":"036c6611-49b7-4ed2-9521-57bffa05ebe5",
+            "stepID":"a206d480-4466-4948-9b71-944787df79f0",
+            "parentID":"a544bb43-61c6-48e9-9908-3edc17837dc3",
+            "children":["6014a546-3c4a-482f-916e-08a481b61204", "c4eaa4b1-2c6b-49d3-95d9-af41c7379932"],
+            "processDate":"2021-04-11T21:51:38",
             "deliveryDate":"",
             "orderPrice":"50",
             "shippingPrice":"5",
-            "status":"producing",
-            "quantity":"1",
+            "status":"Sold",
+            "quantity":"2",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[
+               {"key" : "Batch", "value" : "202106COF2c84b80a"},
+               {"key" : "Type", "value" : "Robusta"}
+            ]
          },
          {
-            "assetItemID":"4",
-            "ownerID":"2",
-            "stepID":"2",
-            "parentID":"1",
-            "processDate":"2021-04-11 21:51:38",
+            "assetItemID":"64be1ff8-8981-427c-b065-c424576b814d",
+            "ownerID":"91ea1472-12d6-4275-b7f2-7b6b3f640138",
+            "stepID":"d1192c44-cf96-487f-a1d1-74cd4bccd7ec",
+            "parentID":"10043c19-baab-4083-bf52-bcb1e0009475",
+            "children":["ae70c071-f07f-45f7-8221-c82437112c31"],
+            "processDate":"2021-04-21T21:51:26",
+            "deliveryDate":"2021-06-11T21:51:38",
+            "orderPrice":"70",
+            "shippingPrice":"20",
+            "status":"Exported",
+            "quantity":"2",
+            "deleted":false,
+            "aditionalInfoMap":[
+               {"key" : "Received date", "value" : "04/21/2021"},
+               {"key" : "Barcode", "value" : "653654758692"}
+            ]
+         },
+         {
+            "assetItemID":"ae70c071-f07f-45f7-8221-c82437112c31",
+            "ownerID":"e2219c06-cd6e-4102-acf6-65f8d983d011",
+            "stepID":"7bfbc8ef-59b7-43d9-b13f-ac5ce405bbfb",
+            "parentID":"64be1ff8-8981-427c-b065-c424576b814d",
+            "children":["7acd4a8e-25a5-475c-9262-04653ead5b1a"],
+            "processDate":"2021-04-11T21:51:26",
             "deliveryDate":"",
-            "orderPrice":"50",
-            "shippingPrice":"5",
-            "status":"producing",
+            "orderPrice":"70",
+            "shippingPrice":"20",
+            "status":"Exported",
+            "quantity":"2",
+            "deleted":false,
+            "aditionalInfoMap":[
+               {"key" : "Customer id", "value" : "001.565.335-86"},
+               {"key" : "Customer doc type", "value" : "CPF"}
+            ]
+         },
+         {
+            "assetItemID":"7acd4a8e-25a5-475c-9262-04653ead5b1a",
+            "ownerID":"75e55075-32d2-4c78-b88f-7655a753b4ce",
+            "stepID":"d1192c44-cf96-487f-a1d1-74cd4bccd7ec",
+            "parentID":"ae70c071-f07f-45f7-8221-c82437112c31",
+            "children":[],
+            "processDate":"2021-04-11T21:51:26",
+            "deliveryDate":"",
+            "orderPrice":"70",
+            "shippingPrice":"20",
+            "status":"Exported",
+            "quantity":"2",
+            "deleted":false,
+            "aditionalInfoMap":[
+               {"key" : "Received date", "value" : "04/21/2021"},
+               {"key" : "Barcode", "value" : "036895378962"}
+            ]
+         },
+         {
+            "assetItemID":"6014a546-3c4a-482f-916e-08a481b61204",
+            "ownerID":"91ea1472-12d6-4275-b7f2-7b6b3f640138",
+            "stepID":"d1192c44-cf96-487f-a1d1-74cd4bccd7ec",
+            "parentID":"ff446b7b-3709-41f2-9839-e6abe6912158",
+            "children":[],
+            "processDate":"2021-04-11T21:51:26",
+            "deliveryDate":"",
+            "orderPrice":"70",
+            "shippingPrice":"20",
+            "status":"Exported",
             "quantity":"1",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[
+               {"key" : "Received date", "value" : "05/01/2021"},
+               {"key" : "Barcode", "value" : "137869369452"}
+            ]
+         },
+         {
+            "assetItemID":"c4eaa4b1-2c6b-49d3-95d9-af41c7379932",
+            "ownerID":"1c0ef67f-566d-4818-8f87-fca135443ca7",
+            "stepID":"d1192c44-cf96-487f-a1d1-74cd4bccd7ec",
+            "parentID":"ff446b7b-3709-41f2-9839-e6abe6912158",
+            "children":[],
+            "processDate":"2021-04-11T21:51:26",
+            "deliveryDate":"",
+            "orderPrice":"70",
+            "shippingPrice":"20",
+            "status":"Exported",
+            "quantity":"1",
+            "deleted":false,
+            "aditionalInfoMap":[
+               {"key" : "Received date", "value" : "04/11/2021"},
+               {"key" : "Barcode", "value" : "634786356982"}
+            ]
          }
       ],
       "actors":[
          {
-            "actorID":"1",
-            "actorType":"rawMaterial",
+            "actorID":"818f6b34-2842-4e40-94c1-bd5b79cd0acd",
+            "actorType":"Extractor",
             "actorName":"James JohnsonX9",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
          },
          {
-            "actorID":"2",
-            "actorType":"manufacturer",
+            "actorID":"036c6611-49b7-4ed2-9521-57bffa05ebe5",
+            "actorType":"Manufacturer",
             "actorName":"Donald Jackson",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
+         },
+         {
+            "actorID":"91ea1472-12d6-4275-b7f2-7b6b3f640138",
+            "actorType":"Distributor",
+            "actorName":"Elizabeth Taylor",
+            "deleted":false,
+            "aditionalInfoMap":[]
+         },
+         {
+            "actorID":"1c0ef67f-566d-4818-8f87-fca135443ca7",
+            "actorType":"Distributor",
+            "actorName":"Charlotte O'Neill",
+            "deleted":false,
+            "aditionalInfoMap":[]
+         },
+         {
+            "actorID":"e2219c06-cd6e-4102-acf6-65f8d983d011",
+            "actorType":"Retailer",
+            "actorName":"bigSales",
+            "deleted":false,
+            "aditionalInfoMap":[]
+         },
+         {
+            "actorID":"75e55075-32d2-4c78-b88f-7655a753b4ce",
+            "actorType":"Customer",
+            "actorName":"Allan Manoel Jr.",
+            "deleted":false,
+            "aditionalInfoMap":[]
          }
       ],
       "steps":[
          {
-            "stepID":"1",
-            "stepName":"exploration",
+            "stepID":"abfd4f63-c172-4bd4-8ebd-ae840348e695",
+            "stepName":"Extraction",
             "stepOrder":1,
-            "actorType":"rawMaterial",
+            "actorType":"Extractor",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
          },
          {
-            "stepID":"2",
-            "stepName":"production",
+            "stepID":"a206d480-4466-4948-9b71-944787df79f0",
+            "stepName":"Processing",
             "stepOrder":2,
-            "actorType":"manufacturer",
+            "actorType":"Manufacturer",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
+         },
+         {
+            "stepID":"d1192c44-cf96-487f-a1d1-74cd4bccd7ec",
+            "stepName":"Distribution",
+            "stepOrder":3,
+            "actorType":"Distributor",
+            "deleted":false,
+            "aditionalInfoMap":[]
+         },
+         {
+            "stepID":"4fd6ed94-7a11-4b6c-95de-6bd3e5a00637",
+            "stepName":"Retail",
+            "stepOrder":4,
+            "actorType":"Retailer",
+            "deleted":false,
+            "aditionalInfoMap":[]
+         },
+         {
+            "stepID":"7bfbc8ef-59b7-43d9-b13f-ac5ce405bbfb",
+            "stepName":"Retail Customer",
+            "stepOrder":5,
+            "actorType":"Customer",
+            "deleted":false,
+            "aditionalInfoMap":[]
          }
       ],
       "deleted":false,
-      "aditionalInfoMap":{
-         
-      }
+      "aditionalInfoMap":[]
    },
    {
-      "assetID":"2",
-      "assetName":"Coffee",
+      "assetID":"5e531f30-83c3-4ed9-a5ce-22594924189b",
+      "assetName":"Gold",
       "assetItems":[
+         {
+            "assetItemID":"cc5b9f57-2db3-409d-8adc-1d5db8e68825",
+            "ownerID":"b471045b-0258-4c8b-ad9c-2e93da0107b2",
+            "stepID":"2a340cac-dbee-459e-b3c3-e4529fc08df7",
+            "parentID":"0",
+            "children":[],
+            "processDate":"2021-04-11T11:49:49",
+            "deliveryDate":"2020-03-07T07:04:05",
+            "orderPrice":"",
+            "shippingPrice":"",
+            "status":"Order initiated",
+            "quantity":"100",
+            "deleted":false,
+            "aditionalInfoMap":[]
+         }
       ],
       "actors":[
          {
-            "actorID":"3",
-            "actorType":"coffee grower",
+            "actorID":"b471045b-0258-4c8b-ad9c-2e93da0107b2",
+            "actorType":"Raw Material",
             "actorName":"Andrew O'connell",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
          },
          {
-            "actorID":"4",
-            "actorType":"producer",
+            "actorID":"86b7d449-1108-4580-a8c2-fd6e937b1f56",
+            "actorType":"Producer",
             "actorName":"Olivia Jones",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
          }
       ],
       "steps":[
          {
-            "stepID":"3",
-            "stepName":"extraction",
+            "stepID":"2a340cac-dbee-459e-b3c3-e4529fc08df7",
+            "stepName":"Exploration",
             "stepOrder":1,
-            "actorType":"coffee grower",
+            "actorType":"Raw Material",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
          },
          {
-            "stepID":"2",
-            "stepName":"production",
+            "stepID":"c1366576-60ca-4145-a499-b821ffdfeb86",
+            "stepName":"Production",
             "stepOrder":2,
-            "actorType":"producer",
+            "actorType":"Producer",
             "deleted":false,
-            "aditionalInfoMap":{
-               
-            }
+            "aditionalInfoMap":[]
          }
       ],
       "deleted":false,
-      "aditionalInfoMap":{
-         
-      }
+      "aditionalInfoMap":[]
    }
 ]
