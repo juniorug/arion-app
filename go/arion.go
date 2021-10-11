@@ -3,7 +3,7 @@
  * Author: Junior Mascarenhas
  * Contact: juniorug@gmail.com
  * homepage: "https://github.com/juniorug/arion-app#readme",
- * Version 1.0.4
+ * Version 1.0.10
  */
 
 package main
@@ -767,7 +767,7 @@ func (s *AssetTransferSmartContract) AddAssetItem(ctx contractapi.TransactionCon
 
 // DeleteActor sets the deleted flag as true for the given actor
 func (s *AssetTransferSmartContract) DeleteActor(ctx contractapi.TransactionContextInterface, actorID string) error {
-	actor, err := s.QueryActor(ctx, "ACTOR_"+actorID)
+	actor, err := s.QueryActor(ctx, actorID)
 	if err != nil {
 		return fmt.Errorf("Failed to read the data from world state: %s", err)
 	}
@@ -784,7 +784,7 @@ func (s *AssetTransferSmartContract) DeleteActor(ctx contractapi.TransactionCont
 
 // DeleteStep sets the deleted flag as true for the given step
 func (s *AssetTransferSmartContract) DeleteStep(ctx contractapi.TransactionContextInterface, stepID string) error {
-	step, err := s.QueryActor(ctx, "STEP_"+stepID)
+	step, err := s.QueryStep(ctx, stepID)
 	if err != nil {
 		return fmt.Errorf("Failed to read the data from world state: %s", err)
 	}
@@ -801,7 +801,7 @@ func (s *AssetTransferSmartContract) DeleteStep(ctx contractapi.TransactionConte
 
 // DeleteAssetItem sets the deleted flag as true for the given assetItem
 func (s *AssetTransferSmartContract) DeleteAssetItem(ctx contractapi.TransactionContextInterface, assetItemID string) error {
-	assetItem, err := s.QueryActor(ctx, "ASSET_ITEM_"+assetItemID)
+	assetItem, err := s.QueryAssetItem(ctx, assetItemID)
 	if err != nil {
 		return fmt.Errorf("Failed to read the data from world state: %s", err)
 	}
@@ -816,21 +816,34 @@ func (s *AssetTransferSmartContract) DeleteAssetItem(ctx contractapi.Transaction
 	return ctx.GetStub().PutState("ASSET_ITEM_"+assetItemID, assetItemAsBytes)
 }
 
-// DeleteAsset sets the deleted flag as true for the given ssset
+// DeleteAsset sets the deleted flag as true for the given asset
 func (s *AssetTransferSmartContract) DeleteAsset(ctx contractapi.TransactionContextInterface, assetID string) error {
-	asset, err := s.QueryActor(ctx, "ASSET_"+assetID)
+	log.Print("[DeleteAsset] called with assetID: ", assetID)
+	asset, err := s.QueryAsset(ctx, assetID)
 	if err != nil {
+		log.Print("[DeleteAsset] Failed to read the data from world state: %s", err)
 		return fmt.Errorf("Failed to read the data from world state: %s", err)
 	}
-
 	asset.Deleted = true
+	log.Print("[DeleteAsset] Asset to be deleted:", asset)
 
 	assetAsBytes, err := json.Marshal(asset)
+	log.Print("[DeleteAsset] assetAsBytes to be deleted: %s", assetAsBytes)
+
 	if err != nil {
+		log.Print("[DeleteAsset] Failed to read the data from world state: %s", err)
 		return err
 	}
-
-	return ctx.GetStub().PutState("ASSET_"+assetID, assetAsBytes)
+	log.Print("[DeleteAsset] will update the asset with deleted=true")
+	ctx.GetStub().PutState("ASSET_"+assetID, assetAsBytes)
+	log.Print("[DeleteAsset] now will call DelState for asset: ", "ASSET_"+assetID)
+	err = ctx.GetStub().DelState("ASSET_" + assetID)
+	if err != nil {
+		log.Print("[DeleteAsset] after call DelState for asset with error:  %s", err)
+		return err
+	}
+	log.Print("[DeleteAsset] after call DelState for asset with NO error. will call getstate")
+	return nil
 }
 
 // MoveAssetItem updates the owner field of assetItem with given id in world state
